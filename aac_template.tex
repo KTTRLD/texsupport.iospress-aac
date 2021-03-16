@@ -21,10 +21,10 @@
 \begin{frontmatter}
 
 %\pretitle{}
-{\centering \title{Using graph tools as an alternative exploratory tool for clinical data - 
+{\centering \title{Using graph tools as an visual analytic tool for clinical data - 
 Lessons Learned/A (technical) Case Report
 }}
-\runtitle{Running head title}
+\runtitle{Graph tools as an alternative data exploratory tool}
 %\subtitle{}
 
 % For one author:
@@ -61,9 +61,9 @@ Researchers are often used to find their data in many distributed tables in the 
 \section{Introduction}\label{s1}
 
 \subsection{Background}\label{s1.1}
-Comprehensive data collections are indispensable for answering complex scientific questions. In health and medical research, the collection of electronic patient records together with multi-omics data (genomics, epigenomics, transcriptomics, proteomics, metabolomics, interactomics, pharmacogenomics, diseasomics) results in heterogeneous databases that can offer enormous potential for science due to the interconnections. By using data-mining methods based on machine learning methods and/or methods from artificial intelligence, statistical relationships in the data can be identified relatively fast and new hypothesis can be generaded ~\cite{Lysenko.2016, Himmelstein.2015}. This hypothesis-free or data-driven approach is important and necessary, especially in difficult manageable heterogeneous data sets [1,3]. At the same time, only the classical hypothesis-driven approach can lead to proven and tested knowledge leading to accepted guidelines for the medical field. With the currently dominant form of data storage in the form of relational databases with multiple tables connected via primary- and foreign keys, hypothesis-driven exploration and analysis are not always possible without further ado [].
+\noindent Comprehensive data collections are indispensable for answering complex scientific questions. In health and medical research, the collection of electronic patient records together with multi-omics data (genomics, epigenomics, transcriptomics, proteomics, metabolomics, interactomics, pharmacogenomics, diseasomics) results in heterogeneous databases that can offer enormous potential for science due to the interconnections. By using data-mining methods based on machine learning methods and/or methods from artificial intelligence, statistical relationships in the data can be identified relatively fast and new hypothesis can be generaded ~\cite{Hulsen.2019,Vlachavas.2021}. This hypothesis-free or data-driven approach is important and necessary, especially in difficult manageable heterogeneous data sets ~\cite{Lysenko.2016, Golub.2010}. At the same time, only the classical hypothesis-driven approach can lead to proven and tested knowledge leading to accepted guidelines for the medical field ~\cite{Lysenko.2016, Cirillo.2019, Weinberg.2010}. With the currently dominant form of data storage in the form of relational databases with multiple tables connected via primary- and foreign keys, hypothesis-driven exploration and analysis are not always possible without further ado [].
 
-Graph databases have proven that they are able to store and visualize complex connections between data elements, especially with heterogeneous data sets [6,7], and also shown an advantage in terms of their general performance compared to currently prevailing database systems such as relational databases [8]. Furthermore, graph database systems such as Neo4j provide extensive data interaction tools that can easily be expanded and thereby turn graphical databases into a storage-, exploration- and analysis tool for the entire data analysis process.
+Graph databases have proven that they are able to store and visualize complex connections between data elements, especially with heterogeneous data sets ~\cite{Fabregat.2018,Himmelstein.2015}, and also shown an advantage in terms of their general performance compared to currently prevailing database systems such as relational databases ~\cite{Lysenko.2016}. Furthermore, graph database systems such as Neo4j provide extensive data interaction tools that can easily be expanded and thereby turn graphical databases into a storage-, exploration- and analysis tool for the entire data analysis process.
 
 In the present work, we demonstrate the use of graphic tools for exploration, analysis and visualization based on a publicly accessible database and compare it with procedures for relational data structures, especially for hypothesis-driven investigations. For this purpose, the relational data structure was transformed into a graphic structure and made explorable and analyzable using the tools provided by Neo4j. 
 
