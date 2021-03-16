@@ -42,23 +42,33 @@ Abbreviate US states, \cny{Country}\printead[presep={\\}]{e1}}
 Abbreviate US states, \cny{Country}\printead[presep={\\}]{e2,e3}}
 
 \begin{abstract}
-Abstract text.
+Researchers are often used to find their data in many distributed tables in the form of rows and columns. In relational databases, for instance, the information is linked across multiple tables by unique identifiers and the relationship between data values is only implicitly apparent. By modelling relationships between data types- or values, graph databases have been used successfully in recent years to represent complex, inhomogeneous data. Furthermore, the exploration of the underlying data structure and the data itself is intuitively possible with graph databases. Neo4j as an example of a graph database system can be adapted in many ways with the help of interactive tools to provide a new way of data exploration and analysis. In the present work, we examine the benefit of graph databases as an exploratory and analytic tool for clinical data. In collaboration with domain experts in Obstetrics and Fetal Medicine, we demonstrate how this resource can improve the efficiency and comprehensiveness of hypothesis generation.
 \end{abstract}
 
 \begin{keyword}
-\kwd{Keyword one}
-\kwd{keyword two}
+\kwd{Graph database}
+\kwd{Neo4j}
 \end{keyword}
 
 \end{frontmatter}
 
 %%%%%%%%%%% The article body starts:
 
-%\section{}\label{s1}
+\section{Introduction}\label{s1}
 
-%\subsection{}\label{s1.1}
+\subsection{Background}\label{s1.1}
+Comprehensive data collections are indispensable for answering complex scientific questions. In health and medical research, the collection of electronic patient records together with multi-omics data (genomics, epigenomics, transcriptomics, proteomics, metabolomics, interactomics, pharmacogenomics, diseasomics) results in heterogeneous databases that can offer enormous potential for science due to the interconnections. By using data-mining methods based on machine learning methods and/or methods from artificial intelligence, statistical relationships in the data can be identified relatively fast and new hypothesis can be generaded [1,2]. This hypothesis-free or data-driven approach is important and necessary, especially in difficult manageable heterogeneous data sets [1,3]. At the same time, only the classical hypothesis-driven approach can lead to proven and tested knowledge leading to accepted guidelines for the medical field. With the currently dominant form of data storage in the form of relational databases with multiple tables connected via primary- and foreign keys, hypothesis-driven exploration and analysis are not always possible without further ado [].
 
+Graph databases have proven that they are able to store and visualize complex connections between data elements, especially with heterogeneous data sets [6,7], and also shown an advantage in terms of their general performance compared to currently prevailing database systems such as relational databases [8]. Furthermore, graph database systems such as Neo4j provide extensive data interaction tools that can easily be expanded and thereby turn graphical databases into a storage-, exploration- and analysis tool for the entire data analysis process.
 
+In the present work, we demonstrate the use of graphic tools for exploration, analysis and visualization based on a publicly accessible database and compare it with procedures for relational data structures, especially for hypothesis-driven investigations. For this purpose, the relational data structure was transformed into a graphic structure and made explorable and analyzable using the tools provided by Neo4j. 
+
+\subsection{Objective and Requirements}\label{s1.2}
+
+\section{State of the art}\label{s2}
+\section{Concept}\label{s3}
+\section{Implementation}\label{s4}
+\section{Conclusion}\label{s5}
 
 
 
