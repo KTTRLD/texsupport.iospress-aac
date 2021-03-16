@@ -1,15 +1,27 @@
 Comprehensive data collections are indispensable for answering complex scientific questions. In health and medical research, the collection of electronic patient records together with multi-omics data (genomics, epigenomics, transcriptomics, proteomics, metabolomics, interactomics, pharmacogenomics, diseasomics) results in heterogeneous databases that can offer enormous potential for clinicians, researcher and administrators due to the interconnection. 
 
 %%%
-Due to the widespread use of relational databases, the most common form of how data is represented and stored today is probably in the form of multiple tables linked via primary and foreign keys. In this way of data storage and presentation, the diverse relationships between data values and types, which are so important to recognize hidden unknown relationships, are only implicit apparent and must be illustrated with the help of additional tools. Visualization tools such as Tableau, Knime or Excel can be helpful in providing exploration and analysis of the data even for a group of users without explicit programming experience, but they also require a certain prior knowledge of the underlying data structure before the analysis can be started. 
+Due to the widespread use of relational databases, the most common form of how data is represented and stored today is the form of multiple tables linked via primary and foreign keys. In this way the diverse relationships between data values and types, which are important to recognize hidden unknown relationships, are implicit apparent and must be illustrated with the help of additional tools. Visualization tools such as Tableau, i2b2 or KNIME or Excel provide data exploration- and analysis functionality for a group of users without explicit programming experience, but they also require a certain prior knowledge of the underlying data structure before the analysis can be started. 
 
-Graph databases could allow in addition to the pure data storage additional visual access to the data. Due to the implementation, graphic databases are already designed for visual dynamic interaction and enable even inexperienced users to access the data and structures. easy, individual expandability of existing tools, even for typical users who are not experts in statistics or data mining. 
+Graph databases could allow in addition to the pure data storage additional visual access to the data. Due to the implementation, graph databases are already designed for visual dynamic interaction and enable even inexperienced users to access the data and structures. easy, individual expandability of existing tools, even for typical users who are not experts in statistics or data mining. 
 
 The Medical Information Mart for Intensive Care (MIMIC) is an example of such a large clinical database (DB) containing multiple tables with data of patients who were treated at intensive care units of the Beth Israel Deaconess Medical Center (Boston, Massachusetts, USA) between 2001 and 2012 ~\cite{Johnson.2016}. The third version MIMIC III collects clinical information, about more than 40 000 patients whit information about clinical measurements, administrative processes, laboratory test results, (pharmacological) therapy descriptions, and caregiver notes. ~\cite{Johnson.2016}. To protect the patient's personal information, an online course must be completed in advance and a data usage agreement must be accepted by the researchers who wish to access the data.
 
 
+\section{State of the art}\label{s2}
+To explore and analyze the MIMIC-III Data the 
+Visual interactive solutions to enable the analysis and exploration of data and to recognize relationships within the data are diverse. There are already tested solutions that can also be used in the medical field. Tools such as Tableau can be named here as examples ~\cite{Ko.2017} or i2b2 ~\cite{Murphy.2014} or Tableau and i2b2 together~\cite{Harris.2016}. But also tools like RapidMiner, Weka, R tool, KNIME, might be useful in this area. \cite{Dwivedi.18.03.201619.03.2016}
+
+Solutions for Visualization, Exploration and Analysation complex data based 
+
+\section{concept}
+To interact and explore the MIMIC III data with a Neo4j instance the 26 provided csv files were transformed with an simple python script which extracted the columns and rows of every file and created the nodes and relationships. In this setting we used the py2neo library to generate the graph database 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Textbausteine}
 
 In addition, this data may have to be linked together using multiple joins in advance of the actual analysis. 
 
@@ -19,5 +31,14 @@ Representing data in a visually appealing way is not only nice to have, but the 
 
 Visual analytics is an emerging discipline that has shown significant promise in addressing many of these information overload challenges.
 
-
 One goal of visual analytics is to find hidden relations in the data and turn this findings into useful knowledge.
+
+Visual interactive solutions to enable the analysis and exploration of data and to recognize relationships within the data are diverse. There are already established solutions that can also be used in the medical field. Commercial visualization tools such as Tableau can be named here as examples. The providers offer visual solutions from data preparation with transformation to data. Commercial solutions such as Tableau, striim, Disqover, OPTUM, rapidminer to name just a few examples, but also open source solutions such as Knime. One is the structure of the data the. The authors were able to gain most of their experience with Tableau as a visualization tool and analysis tool and would like to view this experience as an exemplary application, since Tableau offers both data preparation options and dynamic exoploration of
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Zitate}
+Data analysis is the process of inspecting the data, cleaning the data, transforming the data and modeling data with the goal of discovering useful information, Suggesting conclusions and supporting decision making. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

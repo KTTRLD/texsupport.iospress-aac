@@ -16,6 +16,7 @@
 \firstpage{1}
 \lastpage{1}
 
+
 \begin{document}
 
 \begin{frontmatter}
@@ -70,8 +71,19 @@ In the present work, we demonstrate the use of graphic tools for exploration, an
 \subsection{Objective and Requirements}\label{s1.2}
 
 \section{State of the art}\label{s2}
+To explore and analyze the MIMIC-III Data the 
+Visual interactive solutions to enable the analysis and exploration of data and to recognize relationships within the data are diverse. There are already tested solutions that can also be used in the medical field. Tools such as Tableau can be named here as examples ~\cite{Ko.2017} or i2b2 ~\cite{Murphy.2014} or Tableau and i2b2 together~\cite{Harris.2016}. But also tools like RapidMiner, Weka, R tool, KNIME, might be useful in this area. \cite{Dwivedi.18.03.201619.03.2016}
+
+Solutions for Visualization, Exploration and Analysation complex data based 
+
 \section{Concept}\label{s3}
+
+
+
+
+
 \section{Implementation}\label{s4}
+
 \section{Conclusion}\label{s5}
 
 
