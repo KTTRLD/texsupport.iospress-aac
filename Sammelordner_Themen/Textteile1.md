@@ -13,13 +13,12 @@ Neo4j mas graph database use labeled
 
 
 
-### Big Data und nutzen für die Gesellschaft
+### Big Data und Nutzen für die Gesellschaft
 
 > Für die Wissenschaft besitzen große Datensammlungen ein enormes Potenzial zur Beantwortung komplexer Fragestellungen. Die langfristigen Auswirkungen von Ereignissen wie Lärmbelastungen oder eines geringen sozioökonomischen Status in unterschiedlichen Altersstadien auf die Gesundheit im gesamten Lebensverlauf oder die Zusammenhänge zwischen Lebensstil, Genetik und dem Auftreten von Krankheiten wie Demenz oder Krebs sind hier nur zwei von vielen Beispielen. Aus den gewonnenen Ergebnissen lassen sich dann Handlungsempfehlungen und Leitlinien ableiten, die einen direkten Nutzen für die Bevölkerung und das sie behandelnde medizinische Fachpersonal haben. Gleichzeitig ebnen große Datensammlungen den Weg zu einer personalisierten und selbstbestimmteren medizinischen Versorgung. Mithilfe moderner Medien sind die Menschen in der Lage, ihren Gesundheitszustand eigenständig zu kontrollieren. Dabei könnten z. B. individuelle Grenzwerte für Blutdruck oder Blutzucker festgelegt werden. [Pigeot et al.](https://link.springer.com/article/10.1007%2Fs00103-015-2194-6)
 
 
 ### Big Data und drei "V"
-
 Big Data wird in der Fachliteratur häufig mit den sogenannten drei „V“ in Verbindung gesetzt: große Datenmengen (Volume), die kaum oder sehr heterogen strukturiert vorliegen (Variety) und die mithilfe mathematisch-statistischer Verfahren und Optimierungsalgorithmen möglichst flexibel und in Echtzeit verarbeitet werden (Velocity). Big Data bezieht sich damit nicht nur auf große Datensammlungen, sondern ebenso auf die angewendeten Auswertungsmethoden, die grundsätzlich nicht hypothesengetrieben sind. 
 
 

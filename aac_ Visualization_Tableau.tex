@@ -1,0 +1,134 @@
+% PLEASE USE THIS FILE AS A TEMPLATE
+% Check file iosart2x.tex for more examples
+
+% add. options: [seceqn,secthm,crcready]
+\documentclass[aac]{iosart2x}
+
+%\usepackage{dcolumn}
+
+%%%%%%%%%%% Put your definitions here
+
+
+%%%%%%%%%%% End of definitions
+
+\pubyear{0000}
+\volume{0}
+\firstpage{1}
+\lastpage{1}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+%\pretitle{}
+{\centering \title{Using graph tools as an visual analytic tool for clinical data - 
+Lessons Learned/A (technical) Case Report
+}}
+\runtitle{Graph tools as an alternative data exploratory tool}
+%\subtitle{}
+
+% For one author:
+%\author{\inits{N.}\fnms{Name1} \snm{Surname1}\ead[label=e1]{first@somewhere.com}}
+%\address{Department first, \orgname{University or Company name},
+%Abbreviate US states, \cny{Country}\printead[presep={\\}]{e1}}
+
+% Two or more authors:
+\author[A]{\inits{K.}\fnms{Karl} \snm{GOTTFRIED}\ead[label=e1]{k.gottfried@uke.de}%
+\thanks{Corresponding Author, Karl Gottfried, Applied Medical Informatics, Hamburg, University Hospital Hamburg-Eppendorf, Martinistraße 52, 20246 Hamburg, Germany;  \printead{e1}.}},
+\author[A]{\inits{S.}\fnms{Sylvia} \snm{NÜRNBERG}\ead[label=e2]{second@somewhere.com}}
+and
+\author[A]{\inits{F.}\fnms{Frank} \snm{ÜCKERT}\ead[label=e3]{third@somewhere.com}}
+\address[A]{Applied Medical Informatics, , Germany, \orgname{University Hospital Hamburg-Eppendorf},
+\cny{Germany}\printead[presep={\\}]{e1}}
+\address[B]{Department first, \orgname{University or Company name},
+Abbreviate US states, \cny{Country}\printead[presep={\\}]{e2,e3}}
+
+
+\begin{abstract}
+
+The meaningful visualization of clinical records can help to facilitate interpretation and exploration among physicians scientists or clinicians, especially with extensive data sets. The MIMIC-III database is an intensive care database, which documents in detail the course and treatment of more than 40,000 patients and can be used as the basis for visualization tools in the medical field. In the present work, we developed two exemplary dashboards with Tableau software, that display time series for individual patients and for a selected cohort on the MIMIC-Database. Once created, dashboards can be adapted for specific queries by implementing of dynamic parameters and thus reused. This enables the interactive visualization and exploration of clinical data for non-technical users and also allows them to create customized dashboards.
+\end{abstract}
+
+\begin{keyword}
+\kwd{Tableau}
+\kwd{Neo4j}
+\end{keyword}
+
+\end{frontmatter}
+
+%%%%%%%%%%% The article body starts:
+
+\section{Introduction}\label{s1}
+
+\subsection{Background}\label{s1.1}
+\noindent Tableau is a software platform designed for visual exploration and was initially developed and used for
+data analysis outside of the medical field [Literatur]. In the meantime, due to the continuously growing
+amounts of data and the desire to be able to use this information more efficiently in a clinical and
+scientific context, medicine has also become a possible field of application for data visualization tools
+such as Tableau ~\cite{Ko.2017}. A clinical data set that has already been used to visualize patient data is the MIMIC
+(Medical Information Mart for Intensive Care (MIMIC)) database ~\cite{Festag.2019,Lee.2016}.
+
+
+
+\subsection{Objective and Requirements}\label{s1.2}
+
+\section{State of the art}\label{s2}
+
+
+\section{Concept}\label{s3}
+
+
+\section{Implementation}\label{s4}
+
+\section{Discussion and Outlook}\label{s5}
+
+\section{Conclusion}\label{s6}
+Using Tableau Software, we developed two interactive dashboards to display time-dependent variables. The approach presented can be expanded or adapted depending on the context and thus supplement already established analysis methods for specific questions. An implementation of the presented dashboard is available at ...
+
+
+
+%\begin{figure}[t]
+%\includegraphics{}
+%\caption{Figure caption.}\label{f1}
+%\end{figure}
+
+%\begin{table*}
+%\caption{} \label{t1}
+%\begin{tabular}{lll}
+%\hline
+%&&\\
+%&&\\
+%\hline
+%\end{tabular}
+%\end{table*}
+
+%%%%%%%%%%% The bibliography starts:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  ios1.bst will be used to                               %%
+%%  create a .BBL file for submission.                     %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\nocite{*} 
+% if your bibliography is in bibtex format, use those commands:
+\bibliographystyle{ios1}           % Style BST file.
+\bibliography{bibliograpy_tableau.bib}        % Bibliography file (usually '*.bib')
+
+% or include bibliography directly:
+%\begin{thebibliography}{0}
+%\bibitem{r1} F. Author, Information about cited object.
+%
+%\bibitem{r2} S. Author and T. Author, Information about cited object.
+%\end{thebibliography}
+
+\end{document}
