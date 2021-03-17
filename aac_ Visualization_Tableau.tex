@@ -2,7 +2,7 @@
 % Check file iosart2x.tex for more examples
 
 % add. options: [seceqn,secthm,crcready]
-\documentclass[aac]{iosart2x}
+\documentclass[aac,crcready]{iosart2x}
 
 %\usepackage{dcolumn}
 
@@ -66,12 +66,18 @@ data analysis outside of the medical field ~\cite{Ko.2017} [Literatur Tableau se
 amounts of data and the desire to be able to use this information more efficiently in a clinical and
 scientific context, the medical field has also become a possible application for data visualization tools
 such as Tableau ~\cite{Ko.2017} [weitere Literatur]. A clinical data source that has already been used to visualize patient data is the MIMIC-III (Medical Information Mart for Intensive Care) database, a freely accessible critical care database~\cite{Festag.2019,Lee.2016,Johnson.2020,Johnson.2016}. The third version of the MIMIC data set (MIMIC III) contains extensive clinical parameters of more than 40,000 patients who were admitted and treated in a medical intensive care units of the Beth Israel Deaconess Medical Center (Boston, Massachusetts, USA) between 2001 and 2012. Data classes ranges from clinical measurements like nurse-verified physiological measurements or laboratory test results, administrative
-information like Current Procedural Terminology (CPT) codes and Diagnosis-Related Group (DRG) codes, patient characteristics like Demographic detail and dates of death to free-text interpretations of imaging studies provided by the radiology department~\cite{Johnson.2020,Johnson.2016}. The data was first deidentified in accordance with Health Insurance Portability and Accountability Act (HIPAA) standards before it was incorporated into the database. Furthermore researcher who wants to have access to the data have to pass an online course and accept a data use agreement before they are granted access by the curators ~\cite{Johnson.2020,Johnson.2016}.
+information like Current Procedural Terminology (CPT) codes and Diagnosis-Related Group (DRG) codes, patient characteristics like Demographic detail and dates of death to free-text interpretations of imaging studies provided by the radiology department~\cite{Johnson.2020,Johnson.2016}. The data was first deidentified in accordance with Health Insurance Portability and Accountability Act standards before it was incorporated into the database. Furthermore to protect patients’ privacy, researcher have to pass an online course and accept a data use agreement before they are granted access by the curators ~\cite{Johnson.2020,Johnson.2016}.
 
 
 \subsection{Objective and Requirements}\label{s1.2}
 
-
+The objective of this work is to provide a reusable and adaptable visual data analysis and exploration tool for time series values, so that medically trained researchers can obtain clinical information more easily.
+The requirements to be met by the implemented dashboards are:
+\begin{itemize}
+\item A user can display the course of time-dependent variables like blood pressure over time for a patient or for a cohort and dynamically adjust the variable.
+\item The user can select a patient cohort by dynamic filtering of variables contained in the data.
+\item The dashboards should be easily expandable so that, medically trained researchers can make their own basic extensions or additions to the dashboards.
+\end{itemize}
 
 \section{State of the art}\label{s2}
 
