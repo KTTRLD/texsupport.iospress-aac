@@ -1,8 +1,9 @@
-The objective of this work is to use Tableau Desktop to create interactive and reusable visualizations for MIMIC-III data. This serves as an example use case for clinical data and evaluate the potential applicability of such visualizations as an exploration and analysis tool for a potential data warehouse system.
-The created dashboards might serve as a template for visual data analysis and exploration tool so that medically trained researchers can obtain clinical information more easily.
+The objective of this work is to demonstrate that linked Dashboards, build with Tableau Desktop, can be used to create interactive and reusable visualizations for MIMIC-III data. We will focus on three small potential use cases which might be useful for health researchers and clinicians. This use cases are oriented on the already implemented use cases for the MIMIC III data described by the literature ~\cite{Lee.2016, Festag.2019}.
 The requirements to be met by the implemented dashboards are:
-\begin{itemize}
-\item A user can display the course of time-dependent variables like blood pressure for a patient or for a cohort and dynamically adjust the variable.
-\item The user can select a patient cohort by dynamic filtering of variables contained in the data.
-\item The dashboards should be easily expandable so that, medically trained researchers can make their own basic extensions or additions to the dashboards.
-\end{itemize}
+\begin{description}
+\item[Patient summary] A user should get an brief summary of the data that is collected for a one selected patient. The in formations shown should include all of the possible   like age, gender, diagnosis, laboratory test ect..
+\item[Laboratory view] A user can check the course of time-dependent variables like blood pressure for a patient or for a cohort and dynamically adjust the variable.
+\item[Cohort selection and summary] A user should be able to select a patient cohort based on all the provided data categories and check the distribution for this categories for the selected cohort.
+\end{description}
+
+The created and linked dashboards might serve as a template for visual data analysis and exploration tool so that medically trained researchers can obtain clinical information more easily.
