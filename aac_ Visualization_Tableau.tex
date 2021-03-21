@@ -2,7 +2,7 @@
 % Check file iosart2x.tex for more examples
 
 % add. options: [seceqn,secthm,crcready]
-\documentclass[aac,crcready]{iosart2x}
+\documentclass[aac]{iosart2x}
 
 %\usepackage{dcolumn}
 
@@ -66,11 +66,6 @@ Tableau is a software platform designed for visual exploration and was initially
 A clinical data source that has already been used to visualize patient data is the MIMIC-III (Medical Information Mart for Intensive Care) database, a freely accessible critical care database~\cite{Festag.2019,Lee.2016,Johnson.2020,Johnson.2016}. The third version of the MIMIC data set (MIMIC III) contains extensive clinical parameters of more than 40,000 patients who were admitted and treated in medical intensive care units of the Beth Israel Deaconess Medical Center (Boston, Massachusetts, USA) between 2001 and 2012. Collected data classes ranges from clinical measurements like nurse-verified physiological measurements, laboratory test results or administrative information like Current Procedural Terminology (CPT) codes and Diagnosis-Related Group (DRG) codes to patient characteristics like Demographic detail and dates of death or free-text interpretations of imaging studies provided by the radiology department ~\cite{Johnson.2020,Johnson.2016}. The collected data was first de-identified in accordance with Health Insurance Portability and Accountability Act standards before it was incorporated into the database. Furthermore to protect the privacy of the patients, researcher have to pass an online course and accept a data use agreement before they get access to the database ~\cite{Johnson.2020,Johnson.2016}. A demo data set with 100 patients is provided without restriction for test purposes. 
 The present work uses the MIMIC Data as a clinical data set to enable specific queries with the help of Tableau, such as the visualization of time series data for certain patients or the selection of cohorts based on relevant inclusion and exclusion criteria via a visually explorable representation. In this way, for example, doctors or clinically active scientists can be presented with the relevant information through the use of dashboards and queried repeatedly with little effort.
 
-%%%%%%% Hier fehlt noch ein Text in etwa dieser länge
-A demo data set with 100 patients is provided without restriction for test purposes. 
-The present work uses the MIMIC Data as a clinical data set to enable specific queries with the help of Tableau, such as the visualization of time series data for certain patients or the selection of cohorts based on relevant inclusion and exclusion criteria via a visually explorable representation. In this way, for example, doctors or clinically active scientists can be presented with the relevant information through the use of dashboards and queried repeatedly with little effort.
-
-In this way, for example, doctors or clinically active scientists can be presented with the relevant information through the use of dashboards and queried repeatedly with little effort.
 
 \subsection{Objective and Requirements}\label{s1.2}
 %\input{Kapitel/objective_new}
@@ -106,6 +101,23 @@ After the data model is set up, Tableau differentiates the data values into dime
 Once visualizations are built, the Tableau platform offers multiple options to publish and share the created workbooks and dashboards. Tableau Server for example provides browser-based analytics without the need of Tableau Desktop~\cite{Tableau.20.03.2021}. On a tableau server, it is possible to restrict access to the provided data and workbooks. Tableau public provides the opportunity to publish the workbooks to all interested users.
 
 %The Worksheets of a Workbook are used as the basis for creating dashboards and can be individualized depending on the specific visualization.
+
+\begin{figure}[ht]
+\includegraphics[width=0.7\textwidth]{images/datamodel_1.png}
+\caption{Representation of the MIMIC Data Model: The squares represent CSV data tables the connections between the data tables represent the join relations used}\label{f1}
+\end{figure}
+
+\begin{figure}[HT]
+\centering
+\includegraphics[width=0.8\textwidth]{images/Pat sum.png}
+\caption{User interface and components of the Patient Summary dashboard}\label{f2}
+\includegraphics[width=0.8\textwidth]{images/Labview.png}
+\caption{User interface and components of the Laboratory view of one selected patient}\label{f3}
+\includegraphics[width=0.8\textwidth]{images/ch sel.png}
+\caption{User interface and components of the Cohort selection dashboards}\label{f4}
+\end{figure}
+
+
 \begin{comment}
 
 \begin{table*}
@@ -129,25 +141,10 @@ Miscellaneous & amount of colloids administered, amount of crystalloids administ
 
 \section{Implementation}\label{s4}
 %\input{Kapitel/implementation}
-We use a local copy of the provided 26 comma-separated values (CSV) files and build the corresponding data model based on the information about the MIMIC-III data structure provided by the PhysioNet website (https://mimic.physionet.org/). Fig.~\ref{f1} shows an overview of the data model created by tableau desktop. We use a patient central approach for the data model adapted to the schema provided by the SchemaSpy Analysis of MIMIC-III ~\cite{SchemaSpy.2017}. 
-
-\begin{figure}[ht]
-\includegraphics[width=0.7\textwidth]{images/datamodel_1.png}
-\caption{Representation of the MIMIC Data Model: The squares represent CSV data tables the connections between the data tables represent the join relations used}\label{f1}
-\end{figure}
-
-\begin{figure}[HT]
-\centering
-\includegraphics[width=0.8\textwidth]{images/Pat sum.png}
-\caption{User interface and components of the Patient Summary dashboard}\label{f2}
-\includegraphics[width=0.8\textwidth]{images/Labview.png}
-\caption{User interface and components of the Laboratory view of one selected patient}\label{f3}
-\includegraphics[width=0.8\textwidth]{images/ch sel.png}
-\caption{User interface and components of the Cohort selection dashboards}\label{f4}
-\end{figure}
-
-The implemented solution of the visualization tool is based on three linked tableau dashboards. Each of these dashboards consists of several workbooks, which are linked functionally by so-called actions. Each worksheets of the dashboard provides subtasks for the fulfilment of the main tasks of one dashboard. Fig~\ref{f2} - Fig ~\ref{f3} shows the user interface of all the three created dashboards.
+We use a local copy of the provided 26 comma-separated values (CSV) files and build the corresponding data model based on the information about the MIMIC-III data structure provided by the PhysioNet website (https://mimic.physionet.org/). Fig.~\ref{f1} shows an overview of the data model created by tableau desktop. We use a patient central approach for the data model adapted to the schema provided by the SchemaSpy Analysis of MIMIC-III ~\cite{SchemaSpy.2017}. This structure facilitate the presentation of the patient data. 
+The implemented solution of the visualization tool is based on three linked tableau dashboards. Each of these dashboards consists of several workbooks, which are linked functionally by so-called actions on each dashboard. Each worksheets provides subtasks for the fulfilment of the main tasks of one dashboard. Fig~\ref{f2} - Fig ~\ref{f3} shows the user interface of all the three created dashboards.
 The Patient summary dashboard contains two main components. The top part contains information of the selected patient and displays variables like birthday, age, religion, ...
+The Laboratory view dashboard contains a component to select one or more parameters for the central view. The course of the time series value is represented in the central component. Here we focused on the Criterias 
 
 
 
@@ -182,12 +179,12 @@ The Patient summary dashboard contains two main components. The top part contain
 \end{figure} 
 \end{comment}
 
-\section{Discussion and Outlook}\label{s5}
+\section{Lessons learned}\label{s5}
 The dashboards created with Tableau Desktop represent a customizable and expandable presentation of clinical data. It is easy to imagine that, in addition to the area of application shown, other recurring questions can be presented, such as ...
 A major limitation regarding the reusability of worksheets and dashboards with Tableau is that the visualizations or calculations depend on the correct designation and the data type used. If the name or type of a data field changes in the underlying data model over time, it may be that all the visualizations and calculations that are dependent on it have to be adapted accordingly and cannot be used. Reusability could be increased through a uniform and generally applicable data model. It is conceivable, for example, that the visualization shown is based on a general data model such as SNOMED CT instead of the MIMIC data model and can act as the basis for the data model.
 Although the shown approach only displays key aggregate statistics of patients and cohort of patients it 
 
-It seams, that Tableau fits well if a specific data related question 
+
 
 %Es zeigte sich, dass man mit Tableau für spezielle Visualisierungen von datenbasierten Anfragen gute Ergebnisse produzieren kann wie beispielsweise bei der Visualisierung von Zeit series daten. Hier können wiederkehrende Abfragen über die Laborverläufe von Patienten durch das erstellte Dashboard gut wiederverwendet werden. Möchte man die Bereitstellung eines eher generalisierenden Ansatzes anbieten, der bei der Generierung neuer Erkenntnisse und im Rahmen von Entscheidungsfindungsprozessen im wissenschafltichen Bereich nützlich ist kommt die oben skiziierte Implementation aufgrund der Datenmenge und der Erstellung des Katesischen Produkts bei der erstellung des Datenmodells
 
@@ -235,6 +232,15 @@ The created linked tableau dashboards represent a basic data visualization tool 
 
 
 \nocite{*} 
+\section*{Declarations}
+\paragraph{\noindent Conflict of Interest: The authors state that they have no conflict of interests.}
+
+
+\paragraph{\noindent Contributions of the authors: Statement of the contribution of the authors: Who was involved in the planning and implementation of the project, who was involved in writing and substantial revising of the manuscript.}
+
+\paragraph{\noindent If applicable The following {authors/collaborators} of the ResearchGroupName particpated in this {study/project}: ColaboratorName (city), ColaboratorName (city) }
+
+
 % if your bibliography is in bibtex format, use those commands:
 \bibliographystyle{ios1}           % Style BST file.
 \bibliography{bibliograpy_tableau.bib}        % Bibliography file (usually '*.bib')
