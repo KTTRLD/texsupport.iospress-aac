@@ -2,12 +2,14 @@
 % Check file iosart2x.tex for more examples
 
 % add. options: [seceqn,secthm,crcready]
-\documentclass[aac]{iosart2x}
+\documentclass[aac,crcready]{iosart2x}
 
 %\usepackage{dcolumn}
 
 %%%%%%%%%%% Put your definitions here
 \usepackage{verbatim}
+\usepackage{tabularx}
+\usepackage{lipsum}
 
 %%%%%%%%%%% End of definitions
 
@@ -22,7 +24,7 @@
 \begin{frontmatter}
 
 %\pretitle{}
-{\centering \title{Using linked Tableau Dashboards as Visualization Tool for MIMIC-III Data - Lessons Learned
+{\centering \title{Using Tableau Dashboards as Visualization Tool for MIMIC-III Data - Lessons Learned
 %/A (technical) Case Report
 }}
 \runtitle{Tableau as Tool for MIMIC-III Data Visualization}
@@ -36,7 +38,9 @@
 % Two or more authors:
 \author[A]{\inits{K.}\fnms{Karl} \snm{GOTTFRIED}\ead[label=e1]{k.gottfried@uke.de}%
 \thanks{Corresponding Author, Karl Gottfried, Applied Medical Informatics, Hamburg, University Hospital Hamburg-Eppendorf, Martinistraße 52, 20246 Hamburg, Germany;  \printead{e1}.}},
-\author[A]{\inits{S.}\fnms{Sylvia} \snm{NÜRNBERG}\ead[label=e2]{second@somewhere.com}}
+\author[A]{\inits{S.}\fnms{Sylvia} \snm{NÜRNBERG}\ead[label=e2]{second@somewhere.com}},
+\author[A]{\inits{M.}\fnms{Maximilian} \snm{ATAIAN}\ead[label=e2]{second@somewhere.com}},
+\author[A]{\inits{M.}\fnms{Mario Alejandro} \snm{GÓMEZ ANDREU}\ead[label=e2]{second@somewhere.com}}
 and
 \author[A]{\inits{F.}\fnms{Frank} \snm{ÜCKERT}\ead[label=e3]{third@somewhere.com}}
 \address[A]{Applied Medical Informatics, , Germany, \orgname{University Hospital Hamburg-Eppendorf},
@@ -63,13 +67,45 @@ The unambiguous and easy to interpret visualization of clinical patient records 
 \subsection{Background}\label{s1.1}
 %\input{Kapitel/background_new}
 Tableau is a software platform designed for visual exploration and was initially developed and used for data analysis outside of the medical field ~\cite{Tableau.2021}. Due to the continuously growing amounts of data and the desire to use this information more efficiently in a clinical and scientific context, the medical field has also become a possible application for data visualization tools like Tableau ~\cite{Ko.2017} [weitere Literatur]. 
-A clinical data source that has already been used to visualize patient data is the MIMIC-III (Medical Information Mart for Intensive Care) database, a freely accessible critical care database~\cite{Festag.2019,Lee.2016,Johnson.2020,Johnson.2016}. The third version of the MIMIC data set (MIMIC III) contains extensive clinical parameters of more than 40,000 patients who were admitted and treated in medical intensive care units of the Beth Israel Deaconess Medical Center (Boston, Massachusetts, USA) between 2001 and 2012. Collected data classes ranges from clinical measurements like nurse-verified physiological measurements, laboratory test results or administrative information like Current Procedural Terminology (CPT) codes and Diagnosis-Related Group (DRG) codes to patient characteristics like Demographic detail and dates of death or free-text interpretations of imaging studies provided by the radiology department ~\cite{Johnson.2020,Johnson.2016}. The collected data was first de-identified in accordance with Health Insurance Portability and Accountability Act standards before it was incorporated into the database. Furthermore to protect the privacy of the patients, researcher have to pass an online course and accept a data use agreement before they get access to the database ~\cite{Johnson.2020,Johnson.2016}. A demo data set with 100 patients is provided without restriction for test purposes. 
-The present work uses the MIMIC Data as a clinical data set to enable specific queries with the help of Tableau, such as the visualization of time series data for certain patients or the selection of cohorts based on relevant inclusion and exclusion criteria via a visually explorable representation. In this way, for example, doctors or clinically active scientists can be presented with the relevant information through the use of dashboards and queried repeatedly with little effort.
+A clinical data source that has already been used to visualize patient data is the MIMIC-III (Medical Information Mart for Intensive Care) database, a freely accessible critical care database~\cite{Festag.2019,Lee.2016,Johnson.2020,Johnson.2016}. The third version of the MIMIC data set (MIMIC III) contains extensive clinical parameters of more than 40,000 patients who were admitted and treated in medical intensive care units of the Beth Israel Deaconess Medical Center (Boston, Massachusetts, USA) between 2001 and 2012. Collected data classes ranges from clinical measurements like nurse-verified physiological measurements, laboratory test results or administrative information like Current Procedural Terminology (CPT) codes and Diagnosis-Related Group (DRG) codes to patient characteristics like Demographic detail and dates of death or free-text interpretations of imaging studies provided by the radiology department ~\cite{Johnson.2020,Johnson.2016}.
+Table \ref{t1}. shows a list of the stored categories and variables of the MIMIC-III Data.
+% Tabelle muss noch angepasst werden.
+\begin{table}[htbp]
+\centering
+\caption{Categories and their corresponding variables of the MIMIC-III Data}\label{t1}
+\begin{tabular}{l p{0.75\linewidth}}
+\hline
+Category& Variables\\
+\hline
+Demographic information & age, ethnicity, gender, marital status, religion\\
+Administrative information & admission ICU service type, admission source, admission type, number of days between ICU and hospital admissions, insurance type  \\
+Patient outcomes & mortality at 28 days post-discharge from the hospital, hospital length of stay, hospital mortality, ICU mortality, ICU length of stay, 2-year survival days post-discharge from the hospital\\
+Vital signs & heart rate, mean arterial blood pressure, oxygen saturation, respiratory rate, systolic blood pressure, body temperature\\
+Lab test results & bicarbonate, calcium, chlorine, creatinine, glucose, hematocrit, lactate, magnesium, phosphorus, potassium, sodium, white blood cell count \\
+Interventions & hemodialysis, peritoneal dialysis, total time on mechanical ventilation, vasopressor administration\\
+Miscellaneous & amount of colloids administered, amount of crystalloids administered, body mass index, fluid balance, height, primary ICD-9, SOFA (sequential organ failure assessment) score, SAPS (simplified acute physiology score) I score, urine output, weight
+\end{tabular}
+\hline
+\end{table}
 
+The collected data was first de-identified following Health Insurance Portability and Accountability Act standards before it was incorporated into the database~\cite{Johnson.2020,Johnson.2016}.
+Furthermore, to protect the privacy of the patients, researchers have to pass an online course and accept a data use agreement before they get access to the database~\cite{Johnson.2020,Johnson.2016}. A demo data set with 100 patients is provided without restriction for test purposes.
+
+Many attempts with different tools have been made to visualize clinical data [Literatur]. In addition to the numerous commercially available systems for electronic health records that also contain visualization components (mainly for time-series data), Tableau has also been used for this purpose in this area [Literatur]. Sitting et al. stated the importance of reliable, correct and intuitive visualization for correct interpretation and the decision-making process of physicians and researcher, but also for patient safety~\cite{Sittig.2015}. 
+Furthermore Sitting et al. suggested criteria for a standardized visualization of time series data like laboratory values. In the present work, we developed a visualization tool that allows users to easily visualize clinical data and extract required subsets. Key characteristics of this tool are its, intuitive usability and extensibility. The intended area of application of the tool is as a sub-component for a data warehouse system to facilitate the data exploration and decision-making for physicians and medically trained researchers.
+
+
+%for instance, that there is no standard for the visual representation of clinical data, esspecially for time series data and that every commercially available electronic health record system offers its own visualization solution \cite{Sittig.2015}. According to Sitting et al. this impede not only the simple and intuitive interpretation of laboratory values, but can also lead to misinterpretations, whereby the visualization of clinical data is also relevant for patient safety and underlines the importance of correct visualizations in clinical practice.
+
+
+
+
+
+%The present work uses the MIMIC Data as example clinical data to develop useful, simple to build and intuitive visualization with Tableau for three exemplary use cases of time series data for certain patients or the selection of cohorts based on relevant inclusion and exclusion criteria via a visually explorable representation. In this way, for example, doctors or clinically active scientists can be presented with the relevant information through the use of dashboards and queried repeatedly with little effort.
 
 \subsection{Objective and Requirements}\label{s1.2}
 %\input{Kapitel/objective_new}
-The objective of this work is to demonstrate that linked Dashboards, build with Tableau Desktop, can be used to create interactive and reusable visualizations for MIMIC-III data. We will focus on three small potential use cases which might be useful for health researchers and clinicians. This use cases are oriented on the already implemented use cases for the MIMIC III data described by the literature ~\cite{Lee.2016, Festag.2019}.
+The objective of this work is to demonstrate that linked Dashboards, build with Tableau Desktop, can be used to create interactive easy to use and reusable visualizations for MIMIC-III data. We will focus on three small potential use cases which might be useful for health researchers and clinicians. This use cases are oriented on the already implemented use cases for the MIMIC III data described by the literature ~\cite{Lee.2016, Festag.2019}.
 The requirements to be met by the implemented dashboards are:
 \begin{description}
 \item[Patient summary dashboard] A user get a brief summary of the data that is collected for a one selected patient. The in formations shown should include all of the possible like age, gender, diagnosis, laboratory test ect.
@@ -77,14 +113,12 @@ The requirements to be met by the implemented dashboards are:
 \item[Cohort selection dashboard] A user should be able to select a patient cohort based on all the provided data categories and check the distribution for this categories for the selected cohort.
 \end{description}
 
-
 \section{State of the art}\label{s2}
 %\input{Kapitel/stateofart_new}
 \subsection{Related Work}
 Exploring and analyzing clinical data with visualization tools is already a known research topic~\cite{Caban.2015, Sittig.2015, UnberathPhilipp.2019, Festag.2019}. Festag et al. used KNIME analytics platform to implement a workflow for the MIMIC-III Data and the related MIMIC-III Waveform Database especially for time-series data~\cite{Festag.2019}. The user interface was implemented through so-called meta-nodes to set up the connection to both used databases in a first step~\cite{Festag.2019}. Next, a user was able to enter one or more subject IDs (representations for patients in the DB) and chooses between data sources~\cite{Festag.2019}. As the last step, the user decides which of the time series items or signals should be visualized with a line-plot ~\cite{Festag.2019}.
 Another approach for MIMIC-II DB (previous version of MIMIC-III DB) was made by Lee et al. who established a data visualization tool based on web-based tools like HTML, CSS, and JavaScript libraries (jQuery and D3.js) and tools on the server side like PHP and PostgreSQL~\cite{Lee.2016}. The tool was designed to give the user a quick visualization of key aggregate statistics of the DB like sample size, distributions of clinical variables for a selected cohort. Therefore two main features were implemented, namely a Explore- and a Compare feature ~\cite{Lee.2016}. The Explore feature enables the user to select first a patient cohort based on variables like admission ICU service type, gender, age, and primary International Classification of Diseases 9 (ICD-9) code. In the next step further subselection was provided by the possibility to filter information like administrative information, demographic information, Interventions, laboratory test results, patient outcomes, vital signs and other miscellaneous variables provided by the MIMIC-II data~\cite{Lee.2016}. The Compare feature enables the user to visually compare two patient cohorts for
-selected variables to be visualized~\cite{Lee.2016}. Visualization of time series data for one patient was not implemented by this project. In addition to these research projects, commercially available electronic patient records must also have a visualization component in order to display correct and easy to interpret time series variables such as laboratory values. Sitting et al. stated out for instance, that there is no standard for the visual representation of clinical data, esspecially for time series data and that every commercially available electronic health record system offers its own visualization solution \cite{Sittig.2015}. According to Sitting et al. this impede not only the simple and intuitive interpretation of laboratory values, but can also lead to misinterpretations, whereby the visualization of clinical data is also relevant for patient safety and underlines the importance of correct visualizations in clinical practice.
-
+selected variables to be visualized~\cite{Lee.2016}. Visualization of time series data for one patient was not implemented by this project. In addition to these research projects, commercially available electronic patient records must also have a visualization component in order to display correct and easy to interpret time series variables such as laboratory values. 
 
 
 \subsection{Short commings}
@@ -92,11 +126,12 @@ Both attempts are promising regarding the visualization of clinical data, but se
  
 \section{Concept}\label{s3}
 %\input{Kapitel/concept}
-For our implementation, we use the commercially available software Tableau Desktop provided by Tableau\textregistered. The concept of interaction with Tableau Desktop works by translating drag-and-drop actions into data queries via an intuitive user interface [Literature Tableau]. This concept of interaction enables quick and intuitive data visualizations also for non primarily technical users. For a first introduction of the user interface see also Ko and Chang~\cite{Ko.2017} and the well-documented tableau website [Literature].
+The basis for our implementation is the commercially available software Tableau Desktop provided by Tableau\textregistered. The authors received several hours of training on the software from a Tableau consultant before they used the Software to create visualization tools. 
+The concept of interaction with Tableau Desktop works by translating drag-and-drop actions into data queries via an intuitive user interface [Literature Tableau]. This concept of interaction enables quick and intuitive data visualizations also for non primarily technical users. For a first introduction of the Tableau user interface see also Ko and Chang~\cite{Ko.2017} and the tableau website [Literature].
 
 A Tableau Workbook combines the data sources, the so-called worksheets and dashboards and represents the central instance for saving visualizations with Tableau Desktop. The data sources of a Workbook can be connected to multiple common data sources like spreadsheets or text files, or for instance to a big data, relational database on a server and multiple other options. These data sources may contain many tables that can be linked by joints to create the data model which is the basis for the worksheets. Tableau offers left, inner and right join option to connect tables. Due to the fact, that joins between tables with many rows quickly lead to large records, Tableau Desktop offers since version 2020.2, methods for optimizing data structure creation through the introduction of logical layers. According to Tableau, performance increases can be achieved by the concept of the logical layer without being quantified more precisely [literature]. Another possibility to increase the performance is the creation of so-called extracts, which keep the data set in an optimized form locally and thereby retrieve it more efficiently.
 
-After the data model is set up, Tableau differentiates the data values into dimensions and measurements fields. Dimensions represent qualitative values and are used to categorize and segmentation for the visualizations. Measurements contain numerical values and represent the measured values which can be further aggregated for instance as a sum or minimum. Dimensions and Measurements are colour-coded to distinguish between continuous (green) and discrete (blue) values. These data types are used to create the visualizations on a worksheet. New data values can be added via so-called calculated fields and also displayed in the visualization. Tableau uses its calculation syntax for calculated fields that are reminiscent of Excel statements. Using so-called filters, data rows can be selected and also be changed dynamically using parameters. With these tools, worksheets can be specially adapted and thus used as a basis for dashboards. Dashboards are another way of interaction where individual worksheets can be linked functional together using so-called actions.
+After the data model is set up, Tableau differentiates the data values into dimensions and measurements fields. Dimensions represent qualitative values and are used for categorization and segmentation for the visualizations. Measurements contain numerical values and represent the measured values which can be further aggregated for instance as a sum or minimum. Dimensions and Measurements are colour-coded to distinguish between continuous (green) and discrete (blue) values. These data types are used to create the visualizations on a worksheet. New data values can be added via so-called calculated fields and also displayed in the visualization. Tableau uses its calculation syntax for calculated fields that are reminiscent of Excel statements. Using so-called filters, data rows can be selected and also be changed dynamically using parameters. With these tools, worksheets can be specially adapted and thus used as a basis for dashboards. Dashboards are another way of interaction where individual worksheets can be linked functional together using so-called actions.
 
 Once visualizations are built, the Tableau platform offers multiple options to publish and share the created workbooks and dashboards. Tableau Server for example provides browser-based analytics without the need of Tableau Desktop~\cite{Tableau.20.03.2021}. On a tableau server, it is possible to restrict access to the provided data and workbooks. Tableau public provides the opportunity to publish the workbooks to all interested users.
 
@@ -141,11 +176,11 @@ Miscellaneous & amount of colloids administered, amount of crystalloids administ
 
 \section{Implementation}\label{s4}
 %\input{Kapitel/implementation}
-We use a local copy of the provided 26 comma-separated values (CSV) files and build the corresponding data model based on the information about the MIMIC-III data structure provided by the PhysioNet website (https://mimic.physionet.org/). Fig.~\ref{f1} shows an overview of the data model created by tableau desktop. We use a patient central approach for the data model adapted to the schema provided by the SchemaSpy Analysis of MIMIC-III ~\cite{SchemaSpy.2017}. This structure facilitate the presentation of the patient data. 
-The implemented solution of the visualization tool is based on three linked tableau dashboards. Each of these dashboards consists of several workbooks, which are linked functionally by so-called actions on each dashboard. Each worksheets provides subtasks for the fulfilment of the main tasks of one dashboard. Fig~\ref{f2} - Fig ~\ref{f3} shows the user interface of all the three created dashboards.
-The Patient summary dashboard contains two main components. The top part contains information of the selected patient and displays variables like birthday, age, religion, ...
-The Laboratory view dashboard contains a component to select one or more parameters for the central view. The course of the time series value is represented in the central component. Here we focused on the Criterias 
-
+We use a local copy of the provided 26 comma-separated values (CSV) files and build the corresponding data model based on the information about the MIMIC-III data structure provided by the PhysioNet website (https://mimic.physionet.org/). Figure~\ref{f1} shows an overview of the data model created by Tableau desktop. We use a patient (Subject id) central approach for the data model adapted to the schema provided by the SchemaSpy Analysis of MIMIC-III ~\cite{SchemaSpy.2017}. This structure facilitate the presentation of the data related the subject Ids.   
+The implemented solution of the visualization tool is based on three linked tableau dashboards. Each of these dashboards consists of several workbooks, which are linked functionally by so-called actions on each dashboard. Each worksheets provides subtasks for the fulfilment of the main tasks of one dashboard. Figure~\ref{f2} - Figure ~\ref{f3} show the user interface of all the three created dashboards.
+The \textit{Patient summary dashboard} contains two main components. The top part contains information of the selected patient and displays a selection of variables described by Table~\ref{t1}.
+The \textit{Laboratory view dashboard} contains two main components. The central component to select one or more parameters for the central view. The central displays the time dependent course of the selected variable. This implementation fulfills the criteria for a graphical display of diagnostic test by Setting et al. 
+The \textit{Cohort selection dashboard} \lipsum[1-3]
 
 
 \begin{comment}
@@ -180,9 +215,10 @@ The Laboratory view dashboard contains a component to select one or more paramet
 \end{comment}
 
 \section{Lessons learned}\label{s5}
-The dashboards created with Tableau Desktop represent a customizable and expandable presentation of clinical data. It is easy to imagine that, in addition to the area of application shown, other recurring questions can be presented, such as ...
-A major limitation regarding the reusability of worksheets and dashboards with Tableau is that the visualizations or calculations depend on the correct designation and the data type used. If the name or type of a data field changes in the underlying data model over time, it may be that all the visualizations and calculations that are dependent on it have to be adapted accordingly and cannot be used. Reusability could be increased through a uniform and generally applicable data model. It is conceivable, for example, that the visualization shown is based on a general data model such as SNOMED CT instead of the MIMIC data model and can act as the basis for the data model.
-Although the shown approach only displays key aggregate statistics of patients and cohort of patients it 
+\noindent The dashboards created with Tableau Desktop represent an easy to use, customizable presentation of clinical data. It was possible to build interactive visualizations of three simple use cases for a potential user group like health researchers and clinicians. The visualizations are comparable to the already established visualizations for the MIMIC-III data with additional features like a complex cohort selection mechanism and a patient summary. Furthermore, visualization of time series data in a comprehensive form was also created. 
+Due to the easy to use a drag- and drop based user interface of Tableau Desktop and the experience with this tool it is imaginable that the creation of intuitive visualizations for clinical data is also feasible for non primarily technical user. However, despite the intuitive handling of the Tableau Desktop Software, Tableau training is certainly necessary to learn the subtleties of using it for complex applications like the cohort selection mechanism. The cohort selection use case demonstrate also limitations of the described method especially with a more generalized orientated approach where multiple dynamic parameters were used to provide a flexible cohort selection. The implemented property of dynamic selection needs a bigger data model which leads to performance issues. We realized, that local tableau data extracts improve the total performance but this needs more local storage capacity and this can be critical in the case of big data. To include Dashboard and Tableau in a pipeline of research tools further solutions needs to be tested especially for the generic dashboard approach, which is particularly needed in the medical field where free exploration of the data is needed for decision making or hypothesis generation. Use cases where the use of flexible dynamic parameters is not essential, tableau and the visualization options provided seams to be useful and helpful option.
+A limitation regarding the reusability of worksheets and dashboards with Tableau is that the visualizations or calculations depend on the correct designation and the data type used. If the name or type of a data field changes in the underlying data model, it may be that all the created visualizations and calculations that are dependent on it have to be adapted accordingly and cannot be used. This process is time-consuming and extensive. Reusability could be increased through a uniform and generally applicable data model. It is conceivable, for example, that the visualization shown will be generated based on a general data model such as SNOMED CT instead of the MIMIC data model.
+Although the shown approach only displays key aggregate statistics of patients and cohort of patients dashboards we think, that dashboards can be used as a supplementing tool for visualization of clinical data. This might be useful for instance in the context of an analysation platform in a data warehouse scenario. For a future version, we plan to use dashboards with a distributed data model to increase the performance of generalized dashboards. Moreover, an enhanced requirement analysis in cooperation with potential users is needed to create and test new use cases.
 
 
 
@@ -197,7 +233,7 @@ Although the shown approach only displays key aggregate statistics of patients a
 %The approach of this study combines best practices coming from literature and experts to generate a tool for unambiguous and easy to interpret time series charts. The extensible and parameterizable design of this tool allows its adaption to local preferences.
 
 \section{Conclusion}\label{s6}
-The created linked tableau dashboards represent a basic data visualization tool for MIMIC-III data and allow any researcher with data permission to perform exploration and basic analyzation on this used data set. Without any programming or database knowledge, the tool provides cohort selection options and displays patient key parameters and charts of time-series variables. The approach presented can be expanded or adapted depending on the context and thus supplement already established visualization methods for specific questions. Nonetheless, when designing and creating the data model for individual dashboards, it must also take into account that performance difficulties can arise with generic approaches, which are particularly needed in the medical field for free exploration of the data. Whether and how generic approaches can be implemented with Tableau Dashboards must be investigated in further work. An implementation of the presented dashboard with the demo data is available at the tableau public server and can be downloaded locally and be connected to the expanded data.
+The created linked tableau dashboards represent a basic data visualization tool for MIMIC-III data and allow any researcher with data permission to perform exploration and basic analyzation on this used data set. Without any programming or database knowledge, the tool provides cohort selection options and displays patient key parameters and charts of time-series variables. The approach presented can be expanded or adapted depending on the context and thus supplement already established visualization methods for specific questions. Nonetheless, when designing and creating the data model for individual dashboards, it must also take into account that performance difficulties can arise with generic approaches, which are particularly needed in the medical field for free exploration of the data. Whether and how generic approaches can be implemented with Tableau Dashboards must be investigated in further work. An implementation of the presented dashboard with the demo data is available at the tableau public server and can be downloaded locally.
 
 
 %\begin{figure}[t]
@@ -232,6 +268,7 @@ The created linked tableau dashboards represent a basic data visualization tool 
 
 
 \nocite{*} 
+
 \section*{Declarations}
 \paragraph{\noindent Conflict of Interest: The authors state that they have no conflict of interests.}
 
